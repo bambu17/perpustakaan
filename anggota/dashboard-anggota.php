@@ -69,27 +69,29 @@ if (empty($_SESSION['id_anggota'])){
                     </table>
                     <hr>
                     <h4>Daftar Buku :</h4>
+                    <div class="row g-3">
                     <?php
                     $data_buku = mysqli_query($koneksi, "SELECT*FROM buku ORDER BY id_buku DESC");
                     foreach($data_buku as $buku){
                         ?>
-                        <div class="col-md-3">
-                            <div class="card shadow-sm p-3 d-flex">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="card shadow-sm p-3 h-100">
                                 <h5><?= $buku['judul_buku']?></h5>
 
                                 <p><strong>Pengarang :</strong> <?= $buku['pengarang']?></p>
                                 <p><strong>Diterbitkan Tahun :</strong> <?= $buku['tahun_terbit']?></p>
                                 <?php if($buku['status']=="tersedia"){ ?>
-                            <span class="badge bg-success mb-1">Tersedia</span>
-                            <a href="?halaman=peminjaman&id=<?= $buku['id_buku']?>" class="btn btn-primary text-white"
-                            onclick="return confirm('Peminjaman Buku <?= $buku['judul_buku'] ?>?')">Pinjam Buku</a>
-                            <?php }else{?>
-                            <span class="badge bg-danger mb-1">Tidak Tersedia</span>
-                            <a href="?halaman=peminjaman&id=<?= $buku['id_buku']?>" class="btn btn-primary text-white disable">Pinjam Buku</a>
-                            <?php } ?>
+                                    <span class="badge bg-success mb-2">Tersedia</span>
+                                    <a href="?halaman=peminjaman&id=<?= $buku['id_buku']?>" class="btn btn-primary text-white"
+                                    onclick="return confirm('Peminjaman Buku <?= $buku['judul_buku'] ?>?')">Pinjam Buku</a>
+                                <?php }else{?>
+                                    <span class="badge bg-danger mb-2">Tidak Tersedia</span>
+                                    <a href="?halaman=peminjaman&id=<?= $buku['id_buku']?>" class="btn btn-primary text-white disabled">Pinjam Buku</a>
+                                <?php } ?>
                             </div>
                         </div>
                    <?php } ?>
+                    </div>
            <?php } ?>
         </div>
     </div>    
