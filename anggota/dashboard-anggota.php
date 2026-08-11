@@ -77,7 +77,7 @@ if (empty($_SESSION['id_anggota'])){
                             <div class="card shadow-sm p-3 d-flex">
                                 <h5><?= $buku['judul_buku']?></h5>
 
-                                <p><strong>Pengarang :</strong> <?= $buku['penerbit']?></p>
+                                <p><strong>Pengarang :</strong> <?= $buku['pengarang']?></p>
                                 <p><strong>Diterbitkan Tahun :</strong> <?= $buku['tahun_terbit']?></p>
                                 <?php if($buku['status']=="tersedia"){ ?>
                             <span class="badge bg-success mb-1">Tersedia</span>
